@@ -24,7 +24,7 @@ const signup = async (req, res) => {
 
     res.status(201).json({ token, user: { id: userId, name, email } });
   } catch (err) {
-    console.error("❌ Signup Error:", err);
+    console.error("Signup Error:", err);
     res.status(500).json({ message: 'Server error. Please try again.' });
   }
 };
@@ -39,25 +39,25 @@ const login = async (req, res) => {
   try {
     const user = await User.findUserByEmail(email);
     if (!user) {
-      console.error("❌ Login failed: User not found.");
+      console.error("Login failed: User not found.");
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    // ✅ Debugging: Check stored password vs input password
-    console.log("🔑 Stored Password (hashed):", user.password);
-    console.log("🔑 Entered Password:", password);
+    
+    console.log("Stored Password (hashed)-", user.password);
+    console.log(" Entered Password-", password);
 
     const isMatch = await bcrypt.compare(password, user.password);
     
     if (!isMatch) {
-      console.error("❌ Login failed: Incorrect password.");
+      console.error("Login failed: Incorrect password=");
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
     const token = generateToken(user);
     res.status(200).json({ token, user: { id: user.id, name: user.name, email } });
   } catch (err) {
-    console.error("❌ Login Error:", err);
+    console.error("Login Error", err);
     res.status(500).json({ message: 'Server error. Please try again.' });
   }
 };

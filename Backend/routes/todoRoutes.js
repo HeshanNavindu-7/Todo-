@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const todoController = require('../controllers/todoController');
-const authMiddleware = require('../middleware/authMiddleware'); // ✅ Ensure Middleware is Used
+const authMiddleware = require('../middleware/authMiddleware');
 
 router.get('/todos', authMiddleware, todoController.getTodos);
 router.post('/todos', authMiddleware, todoController.createTodo);

@@ -46,7 +46,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setIsLoading(false);
   }, []);
 
-  // ✅ Signup and navigate to /todo
+
   const signup = async (name: string, email: string, password: string): Promise<boolean> => {
     setIsLoading(true);
     try {
@@ -76,7 +76,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
   
 
-  // ✅ Login and navigate to /todo
+  
   const login = async (email: string, password: string): Promise<boolean> => {
     setIsLoading(true);
     try {
@@ -104,7 +104,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  // ✅ Logout and navigate to /auth
+
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('currentUser');
